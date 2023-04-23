@@ -8,10 +8,18 @@ void print_string(va_list list)
 	int j = 0;
 	char *str = va_arg(list, char*);
 
-	while (str != NULL)
+	if (str == NULL)
 	{
-		if (str[j] == '\0')
-			return;
+		_putchar('(');
+		_putchar('n');
+		_putchar('u');
+		_putchar('l');
+		_putchar('l');
+		_putchar(')');
+		return;
+	}
+	while (str[j] != '\0')
+	{
 		_putchar(str[j]);
 		j++;
 	}
