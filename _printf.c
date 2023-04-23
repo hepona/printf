@@ -1,6 +1,5 @@
 #include "main.h"
 #include <stdlib.h>
-#include "_putchar.c"
 /**
  * _printf -> print everything
  * @format: string
