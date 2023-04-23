@@ -1,16 +1,22 @@
 #include "main.h"
 #include <stdlib.h>
+/**
+ * _printf -> printing
+ * @format: char const
+ * @...: arguments
+ * Return: 0
+ */
 int _printf(const char *format, ...)
 {
 	va_list list;
-	int i; 
-	
+	int i;
+
 	va_start(list, format);
 	if (format == NULL)
 	{
 		return (-1);
 	}
-	
+
 	for (i = 0; format[i] != '\0' ; i++)
 	{
 		if (format[i] != '%')
@@ -31,10 +37,9 @@ int _printf(const char *format, ...)
 					break;
 				default:
 					return (-1);
-					break;
 			}
 		}
 	}
 	va_end(list);
-	return 0;
+	return (0);
 }
