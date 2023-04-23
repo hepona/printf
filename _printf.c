@@ -27,6 +27,10 @@ int _printf(const char *format, ...)
 		{
 			switch (format[i + 1])
 			{
+				case '%':
+					_putchar('%');
+					i++;
+					break;
 				case 'c':
 					print_chara(list);
 					i++;
