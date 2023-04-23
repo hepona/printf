@@ -10,6 +10,8 @@ void print_string(va_list list)
 
 	while (str[j] != '\0')
 	{
+		if (str[j] == NULL)
+			return (-1);
 		_putchar(str[j]);
 		j++;
 	}
