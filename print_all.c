@@ -11,7 +11,7 @@ void print_string(va_list list)
 	while (str != NULL)
 	{
 		if (str[j] == '\0')
-			return (-1);
+			return;
 		_putchar(str[j]);
 		j++;
 	}

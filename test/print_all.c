@@ -5,11 +5,13 @@
  */
 void print_string(va_list list)
 {
-	int j;
+	int j = 0;
 	char *str = va_arg(list, char*);
 
-	while (str[j] != '\0')
+	while (str != NULL)
 	{
+		if (str[j] == '\0')
+			return;
 		_putchar(str[j]);
 		j++;
 	}
