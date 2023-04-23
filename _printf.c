@@ -35,8 +35,9 @@ int _printf(const char *format, ...)
 					i++;
 					break;
 				default:
-					va_end(list);
-					return (-1);
+					_putchar('%');
+					_putchar(format[i]);
+					break;
 			}
 		}
 	}
