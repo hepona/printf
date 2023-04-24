@@ -3,10 +3,9 @@
  * print_string -> fct to print strings
  * @list: va list type
  */
-int print_string(va_list list)
+void print_string(va_list list)
 {
 	int j = 0;
-	int count = 0;
 	char *str = va_arg(list, char*);
 
 	if (str == NULL)
@@ -17,15 +16,13 @@ int print_string(va_list list)
 		_putchar('l');
 		_putchar('l');
 		_putchar(')');
-		return (-1);
+		return;
 	}
 	while (str[j] != '\0')
 	{
 		_putchar(str[j]);
-		count++;
 		j++;
 	}
-	return(count);
 }
 /**
  * print_chara -> fct to print characters
