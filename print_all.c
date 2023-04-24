@@ -6,6 +6,7 @@
 void print_string(va_list list)
 {
 	int j = 0;
+	int count = 0;
 	char *str = va_arg(list, char*);
 
 	if (str == NULL)
@@ -21,6 +22,7 @@ void print_string(va_list list)
 	while (str[j] != '\0')
 	{
 		_putchar(str[j]);
+		count++;
 		j++;
 	}
 }
