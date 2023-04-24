@@ -35,11 +35,11 @@ int _printf(const char *format, ...)
 					i++;
 					break;
 				default:
-					va_end(list);
-					return (-1);
+					_putchar(format[i]);
+					break;
 			}
 		}
 	}
 	va_end(list);
-	return (0);
+	return (i);
 }
