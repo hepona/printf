@@ -38,6 +38,7 @@ int _printf(const char *format, ...)
 					break;
 				case 's':
 					print_string(list);
+					count++;
 					i++;
 					break;
 				default:
