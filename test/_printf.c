@@ -10,7 +10,7 @@ int _printf(const char *format, ...)
 {
 	va_list list;
 	int i;
-	int count;
+	int count = 0;
 
 	va_start(list, format);
 	if (format == NULL)
@@ -18,7 +18,7 @@ int _printf(const char *format, ...)
 	for (i = 0; format[i] != '\0' ; i++)
 	{
 		if (format[i] != '%')
-		{	
+		{
 			_putchar(format[i]);
 			count++;
 		}
@@ -43,7 +43,9 @@ int _printf(const char *format, ...)
 					break;
 				default:
 					_putchar(format[i]);
-					count++;
+					_putchar(format[i + 1]);
+					count = count + 2;
+					i++;
 					break;
 			}
 		}
