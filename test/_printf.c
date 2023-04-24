@@ -12,9 +12,9 @@ int _printf(const char *format, ...)
 	int i;
 	int count = 0;
 
-	va_start(list, format);
 	if (format == NULL)
 		return (-1);
+	va_start(list, format);
 	for (i = 0; format[i] != '\0' ; i++)
 	{
 		if (format[i] != '%')
