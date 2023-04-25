@@ -1,20 +1,14 @@
 #include "main.h"
-#include <stdlib.h>
 /**
- * _printf -> printing
- * @format: char const
- * @...: arguments
- * Return: 0
+ * cases -> all pritnf cases
+ * @format: char
+ * Return: count
  */
-int _printf(const char *format, ...)
+int cases(const char *format, va_list list)
 {
-	va_list list;
 	int i;
 	int count = 0;
 
-	if (format == NULL)
-		return (-1);
-	va_start(list, format);
 	for (i = 0; format[i] != '\0' ; i++)
 	{
 		if (format[i] != '%')
@@ -43,9 +37,7 @@ int _printf(const char *format, ...)
 					break;
 				default:
 					_putchar(format[i]);
-					_putchar(format[i + 1]);
-					count = count + 2;
-					i++;
+					count++;
 					break;
 			}
 		}

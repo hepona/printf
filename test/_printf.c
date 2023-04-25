@@ -9,47 +9,11 @@
 int _printf(const char *format, ...)
 {
 	va_list list;
-	int i;
 	int count = 0;
 
 	if (format == NULL)
 		return (-1);
 	va_start(list, format);
-	for (i = 0; format[i] != '\0' ; i++)
-	{
-		if (format[i] != '%')
-		{
-			_putchar(format[i]);
-			count++;
-		}
-		else
-		{
-			switch (format[i + 1])
-			{
-				case '%':
-					_putchar('%');
-					count++;
-					i++;
-					break;
-				case 'c':
-					print_chara(list);
-					count++;
-					i++;
-					break;
-				case 's':
-					print_string(list);
-					count++;
-					i++;
-					break;
-				default:
-					_putchar(format[i]);
-					_putchar(format[i + 1]);
-					count = count + 2;
-					i++;
-					break;
-			}
-		}
-	}
-	va_end(list);
+	cases(format, list);
 	return (count);
 }
