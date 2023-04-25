@@ -4,10 +4,11 @@
  * @format: char
  * Return: count
  */
-int cases(const char *format, va_list list)
+int cases(const char *format)
 {
 	int i;
 	int count = 0;
+	va_list list;
 
 	for (i = 0; format[i] != '\0' ; i++)
 	{
@@ -42,6 +43,5 @@ int cases(const char *format, va_list list)
 			}
 		}
 	}
-	va_end(list);
 	return (count);
 }
