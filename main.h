@@ -6,4 +6,5 @@ int _printf(const char *format, ...);
 int _putchar(char c);
 void print_string(va_list list);
 void print_chara(va_list list);
+int cases(const char *format, va_list list);
 #endif
