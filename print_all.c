@@ -10,12 +10,11 @@ void print_string(va_list list)
 
 	if (str == NULL)
 	{
-		_putchar('(');
-		_putchar('n');
-		_putchar('u');
-		_putchar('l');
-		_putchar('l');
-		_putchar(')');
+		while(S_NULL[j] != '\0')
+		{
+			_putchar(S_NULL[j]);
+			j++;
+		}
 		return;
 	}
 	while (str[j] != '\0')
