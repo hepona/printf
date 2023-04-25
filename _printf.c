@@ -1,55 +1,50 @@
 #include "main.h"
-#include <stdlib.h>
+
 /**
- * _printf -> printing
- * @format: char const
- * @...: arguments
- * Return: 0
+ * _printf - prints anything
+ * @format: the format string
+ *
+ * Return: number of bytes printed
  */
 int _printf(const char *format, ...)
 {
-	va_list list;
-	int i;
-	int count = 0;
+	int sum = 0;
+	va_list ap;
+	char *p, *start;
+	params_t params = PARAMS_INIT;
 
-	if (format == NULL)
+	va_start(ap, format);
+
+	if (!format || (format[0] == '%' && !format[1]))
 		return (-1);
-	va_start(list, format);
-	for (i = 0; format[i] != '\0' ; i++)
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
+		return (-1);
+	for (p = (char *)format; *p; p++)
 	{
-		if (format[i] != '%')
+		init_params(&params, ap);
+		if (*p != '%')
 		{
-			_putchar(format[i]);
-			count++;
+			sum += _putchar(*p);
+			continue;
 		}
+		start = p;
+		p++;
+		while (get_flag(p, &params)) /* while char at p is flag char */
+		{
+			p++; /* next char */
+		}
+		p = get_width(p, &params, ap);
+		p = get_precision(p, &params, ap);
+		if (get_modifier(p, &params))
+			p++;
+		if (!get_specifier(p))
+			sum += print_from_to(start, p,
+				params.l_modifier || params.h_modifier ? p - 1 : 0);
 		else
-		{
-			switch (format[i + 1])
-			{
-				case '%':
-					_putchar('%');
-					count++;
-					i++;
-					break;
-				case 'c':
-					print_chara(list);
-					count++;
-					i++;
-					break;
-				case 's':
-					print_string(list);
-					count++;
-					i++;
-					break;
-				default:
-					_putchar(format[i]);
-					_putchar(format[i + 1]);
-					count = count + 2;
-					i++;
-					break;
-			}
-		}
+			sum += get_print_func(p, ap, &params);
 	}
-	va_end(list);
-	return (count);
+	_putchar(BUF_FLUSH);
+	va_end(ap);
+	return (sum);
 }
+
